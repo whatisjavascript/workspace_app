@@ -1,0 +1,176 @@
+.type-choose {
+  padding: 50rpx 50rpx 25rpx;
+  overflow: hidden;
+}
+.create-company-wrap {
+  position: relative;
+  float: left;
+  width: 280rpx;
+  height: 280rpx;
+  text-align: center;
+  border: 5rpx solid #ccc;
+  border-radius: 8rpx;
+  transition: border, box-shadow .8s;
+}
+.join-company-wrap {
+  position: relative;
+  float: right;
+  width: 280rpx;
+  height: 280rpx;
+  text-align: center;
+  border: 5rpx solid #ccc;
+  border-radius: 8rpx;
+  transition: border, box-shadow .8s;
+}
+.create-company-wrap.active,
+.join-company-wrap.active {
+  border-color: #1296db;
+  box-shadow: 0 0 20rpx 10rpx #e1e1e1;
+}
+.create-company-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200rpx;
+  height: 140rpx;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+}
+.join-company-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140rpx;
+  height: 140rpx;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+}
+.type-choose-txt {
+  position: relative;
+  top: 220rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+.create-company-wrap.active .type-choose-txt,
+.join-company-wrap.active .type-choose-txt {
+  color: #1296db;
+}
+
+.form-wrap {
+  margin-top: 40rpx;
+  padding-left: 50rpx;
+  padding-right: 50rpx;
+  font-size: 24rpx;
+}
+.tip {
+  text-align: center;
+  color: #999;
+}
+.form {
+  margin-top: 50rpx;
+  width: 100%;
+}
+.form-item {
+  padding: 16rpx 20rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 8rpx;
+  transition: border-color .8s;
+}
+.form-item.active {
+  border-color: #1296db;
+}
+.form-item:not(first) {
+  margin-top: 40rpx;
+}
+.form-item-icon {
+  float: left;
+  width: 50rpx;
+  height: 50rpx;
+}
+.form-item input {
+  margin-left: 80rpx;
+  font-size: 28rpx;
+  color: #777;
+}
+.company-name-icon {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAh1BMVEUAAADMzMzLy8vMzMzMzMzLy8vLy8vMzMzn5+fNzc3W1tbMzMzMzMzNzc3R0dHMzMzLy8vMzMzNzc3MzMzMzMzMzMzMzMzMzMzMzMzNzc3Nzc3Pz8/MzMzMzMzMzMzMzMzMzMzNzc3MzMzNzc3MzMzMzMzLy8vMzMzNzc3Nzc3Ly8vOzs7MzMxV6LsSAAAALHRSTlMAqpOWecXAOwMxB/pkFA7x/F0a9e3otZ5ZUCof4rqxpottVULa08x9c0qEPzjjSTgAAAFYSURBVEjHzZPXcoMwEEUpwkYFTDO9GtdE//99Wclmxg8JLJkU3xdYdM/Mau9iLMkt2nNkoEWtREpZlzh3dD3Ku3bbZTc7pMq6t/SDHxbsW3sHtsQeXcOSWte5VshRtZHdXCgAmCdY2MBpbBYMimfA/tReZtAKb3Mf3lEAkUEjwO35SKAYPDWglu9zFAByR+hKqakwAO33clJM3AWgujySnaBsDvAGR3/nqfDIw2N+CbA8DfTOmHqgC4B762IJSrKbCmsZ0B3X1ru6IgqATt7oVPjhgACc6eJhyqWJBTzRqItjgWqj3XhgK+U3gZNYASSdgGVFAoFzoSoJLOD7UxmhgMkcdgk6Bzb2pzU5tPFf5cB7PMDPtoDR4oBSe/E53LUeYDTsCRKoCtKdgtVTejGA145pkZAi17uEX+fXc2ARHQ+iQK7GuY7/e6xaPwXkm7su6njYPMkwPgD5YZ+96+++cwAAAABJRU5ErkJggg==) center center no-repeat;
+  background-size: 100% 100%;
+}
+.form-item.active .company-name-icon {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAilBMVEUAAAARldsRltsRltsRldsRltsRltoRltsAv/8Rld0AmOMRltoMl9wRltsRltsRltsRltsRltsRldsSltwRltwQldwPleAEmeERltsSltsQltsQltwPlt0Pld8SltsRltsRltsSldwRltsQltsRltsPldwRldsRltsRltsQltwOlt4PldsSldsSltvSdCsxAAAALXRSTlMAk5Z5qcWtwAE8BvoV/e60WumcZFQuEAvzul9NQx/24tGPiXxwMtmjajcoHMuj1SMnAAABY0lEQVRIx83S127DMAwFUCUeUSx5z3jPZur/f6+mDQF5aCK6KIrcN8k8AEWaqGIV5oMTdKbOEUI0N1w1H7/EGueqrrYi155L/c4FwSJF+XUPrThBSclOLNHeVN81aCU7FxacAEDGF9Wpd5pbqfUIqp/B/sfyW5DNDbteCgcM0IR9ChNCkgQJiguHAZnM9zAAQsu5K8ipwoCp84VMrVEFqIZ1s7ZEwTvAL4aAMDfkmlijvwSp5zK4zPRloApAy3MNN36wrFYNlo6b7ghPRAEhnH6Sh8QbEcCQ1fn8FBMLeAh/ncCCaq3Gg6MQvwRtuAE4es4JQQLbGK6wCSxIU7n3Ow6s4fnZQe/BKvt2yx7c+r/2wHo8YI99GFPkWG9BOFnyBj3W7cCK817DAVoVg97am6f0YYA1hrnT8lgF6AKSmMsLFIBsB9Y9LqNLhANx22TIR1PElLYDmb8C3mHNAN/Hw1MI+QY5lqTaqL9VLwAAAABJRU5ErkJggg==) center center no-repeat;
+  background-size: 100% 100%;
+}
+
+.company-number-icon {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAYFBMVEUAAADLy8vMzMzMzMzLy8vMzMzMzMzMzMzMzMzMzMzNzc3Pz8+/v7/MzMzMzMzX19fMzMzMzMzMzMzNzc3MzMzLy8vMzMzMzMzMzMzLy8vOzs7MzMzLy8vNzc3S0tLMzMxgA431AAAAH3RSTlMAQI2QwPPJlmO3TAkE7eEM+tkyLsyZhHx2OyonXlsRN6r4iQAAALFJREFUSMft09sKwjAMgOE4l3Xntd3ZqX3/txS8sHQkdhPEFfzvv4QSCgduyaThkvFUwKpcmrfVCzjdK+NJlQ64Gm83Bwx+EDkg8oPzT0CWn4jyjANYAllZMUABk9q94bM3hHGH74OxAaJm4kAFTDUD6r3AzEA284/uYqIuqDv8QegAe6173AyStHj+tDTZAlC08EoLZIEdbrNraIDiAkStQALY4URFmqzB6Awn1wxw1B4OqIHViOpEVAAAAABJRU5ErkJggg==) center center no-repeat;
+  background-size: 100% 100%;
+}
+
+.form-item.active .company-number-icon {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAWlBMVEUAAAAQl9sQltsSldwRltsRldsRltsSldsRltwQlt0RldsRldsRltsAmOUAgP8RltoRltsSldsAnukSltsRltwQltoRltsQldwRl9wSmNsNmN8PluEAndgSltsOsjaUAAAAHXRSTlMAQI2QwMqX82Mw8LdMCQT639gL54R8dlw7KicRDbXmqu8AAAC0SURBVEjH7dPZCsIwEEDRsTZd0mazq9X8/28KvgxZphFBbKD3MXBmCCFw4LZOWSpVzgK8emV30xs4PbhNZKQDFptsccCYBoUDijS4/gV0/SVS31GglhBNcgIYIDIE4OSG7+6Qxzv8HkxPiHSbKTAA0UAATQFNALtCtJW+NCsjsaze4QS5g7pq26r+GLBGvH9aw3YBDsdjXBMCHI7hmjjg1R0wd00IcHiYaJgPJn94uGaEo/YCo795jz4nDDIAAAAASUVORK5CYII=) center center no-repeat;
+  background-size: 100% 100%;
+}
+.company-position-icon {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAhFBMVEUAAADu7u7MzMzNzc3V1dXMzMzMzMzMzMzNzc3Ly8vMzMzMzMzLy8vLy8vMzMzPz8/Ly8vMzMzMzMzMzMzPz8/R0dHMzMzMzMzMzMzMzMzMzMzNzc3MzMzMzMzMzMzLy8vMzMzMzMzMzMzQ0NDMzMzMzMzLy8vMzMzLy8vNzc3Ozs7MzMzdGdyUAAAAK3RSTlMAAvg7CefTYU784M/CkycZ8mpVRSMQpZ+MhYBl7LuulHpzWx7618mVyjMvip+HnAAAAWhJREFUSMeV1dmCgjAMBdALKLLjIOC+bzOT//+/eYq2pKnMeUxra9IYIVXnfTwNd4/+9IMRmpjepmUFv6qggb6Fx1dKwq2BZnIgp5OyP9iTYgWnDalmcFiQLl1ACDIyhHkekuEeYGhr7C6jAAiio/GZrajQlFhRc7Au3k84gS0hdjBuD3piCWzL11GddXHO8eUg5Z1SwYjjOzvtluPZsBx3Xrm6DyoxsOKVyG5q8Y1EuRu7TUUxRPm+rPDl8w0X9zkrNQe7nX45HKst1trxm7sYmHF8Dts3L+TWQ3SvFtvDtibWm710IHaGrSW9W/mhbbH/95DLCUOmMI55t3g2Ti8kj3ACoSSPElIdei7o4LAm1Rou3ZwEawIIZ1JctGGckVMBTUQuaQWFkvcGuiAn4RHAoxWVml/h1dBAApU9M+WEHFXbeIKPKqOnshojLNJXwhVGSVLln001U6agbqO8sO5I9MS/PE/Kwh+F8JUUt2i3KQAAAABJRU5ErkJggg==) center center no-repeat;
+  background-size: 100% 100%;
+}
+
+.position-txt {
+  margin-left: 80rpx;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  font-size: 28rpx;
+  color: #777;
+}
+
+.form-item textarea{
+  width: 100%;
+  height: 140rpx;
+  color: #777;
+  font-size: 28rpx;
+}
+
+.next-step {
+  margin-top: 40rpx;
+  color: #fff;
+  background-color: #1296db;
+}
+
+.auth-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+  z-index: 9999;
+}
+.auth-alert-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 84%;
+  height: 300rpx;
+  background-color: #fff;
+  -webkit-transform: translate3d(-50%, -45%, 0);
+  transform: translate3d(-50%, -45%, 0);
+  border-radius: 10rpx;
+}
+.auth-alert-txt {
+  padding: 80rpx 20rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+.auth-alert-txt icon {
+  position: relative;
+  top: 5rpx;
+  margin-right: 10rpx;
+}
+.auth-btn {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border: none;
+}

@@ -1,0 +1,11 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/create_join_company/create_join_company"
+    ],
+    "window": {
+        "backgroundTextStyle":"light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle":"black"
+    }
+}

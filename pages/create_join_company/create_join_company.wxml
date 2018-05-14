@@ -1,0 +1,52 @@
+<view class="wrapper">
+  <view class="type-choose">
+    <view class="create-company-wrap {{createCompanyActive ? 'active' : ''}}" bind:tap="chooseCreateCompany">
+      <image src="../../images/create_company.png" class="create-company-bg" hidden="{{createCompanyActive}}"></image>
+      <image src="../../images/create_company_active.png" class="create-company-bg" hidden="{{!createCompanyActive}}"></image>
+      <text class="type-choose-txt">创建新团队</text>
+    </view>
+    <view class="join-company-wrap {{!createCompanyActive ? 'active' : ''}}" bind:tap="chooseJoinCompany">
+      <image src="../../images/join_company.png" class="join-company-bg" hidden="{{!createCompanyActive}}"></image>
+      <image src="../../images/join_company_active.png" class="join-company-bg" hidden="{{createCompanyActive}}"></image>
+      <text class="type-choose-txt">加入团队</text>
+    </view>
+  </view>
+  <view class="form-wrap" hidden="{{!createCompanyActive}}">
+    <view class="tip">请填写以下信息，开始创建团队</view>
+    <view class="form">
+      <view class="form-item {{focusCompanyName ? 'active' : ''}}">
+        <view class="form-item-icon company-name-icon"></view>
+        <input placeholder="输入企业名称" maxlength='20' bindfocus="focusCompanyName" bindblur="blurCompanyName" bindinput="inputFilter"></input>
+      </view>
+      <view class="form-item {{focusCompanyNumber ? 'active' : ''}}">
+        <view class="form-item-icon company-number-icon"></view>
+        <input placeholder="输入企业编号(建议企业名称字母加数字)" maxlength='18' bindfocus="focusCompanyNumber" bindblur="blurCompanyNumber" bindinput="inputFilter"></input>
+      </view>
+      <view class="form-item {{focusCompanyPosition ? 'active' : ''}}">
+       <view class="form-item-icon company-position-icon"></view>
+        <picker mode="region" bindchange="companyPositionChange" value='{{["广东省", "广州市", "番禺区"]}}'>
+          <view class="position-txt">{{companyPosition === null ? '请选择企业所在地' : companyPosition}}</view>
+        </picker>
+      </view>
+      <view class="form-item {{focusCompanyAddressDetail ? 'active' : ''}}">
+        <textarea placeholder="请输入企业详细地址" maxlength='80' bindfocus="focusCompanyAddressDetail" bindinput='changeCompanyAddressDetail'></textarea>
+      </view>
+      <button class="next-step" hover-class="none" bind:tap="submitCompanyInfo">完成</button>
+    </view>
+  </view>
+  <view class="form-wrap" hidden="{{createCompanyActive}}">
+    <view class="tip">欢迎加入团队</view>
+  </view>
+</view>
+<view class="auth-alert" hidden="{{!showAuthLocationAlert}}">
+  <view class="auth-alert-inner">
+    <view class="auth-alert-txt"><icon type="warn" size='20'></icon>小程序需要用到定位服务，请您的授权地理位置信息</view>
+    <button class="auth-btn" type="primary" hover-class='none' bind:tap="openAuthSetting">打开授权</button>
+  </view>
+</view>
+<view class="auth-alert" hidden="{{!showAuthUserInfoAlert}}">
+  <view class="auth-alert-inner">
+    <view class="auth-alert-txt"><icon type="warn" size='20'></icon>应用需要获得您的头像，性别和昵称</view>
+    <button class="auth-btn" type="primary" hover-class='none' open-type='getUserInfo' bindgetuserinfo="getUserWxInfo">打开授权</button>
+  </view>
+</view>
