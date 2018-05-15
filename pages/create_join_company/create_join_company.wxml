@@ -36,6 +36,34 @@
   </view>
   <view class="form-wrap" hidden="{{createCompanyActive}}">
     <view class="tip">欢迎加入团队</view>
+    <view class="search-company-box">
+      <view class="search-icon"></view>
+      <input placeholder="请输入企业编号" maxlength='18' class="search-company-ipt" bindblur='searchCompany' bindconfirm='searchCompany' confirm-type="search"/>
+    </view>
+    <view class="company-info-box" hidden="{{companySearchResult === null}}">
+      <view class="huizhang"></view>
+      <view class="info-item">
+        <view class="form-item-icon company-number-icon company-info-icon"></view>
+        <text class="info-item-label">企业编号：</text>
+        <text class="info-item-content">{{companySearchResult.Number}}</text>
+      </view>
+      <view class="info-item">
+        <view class="form-item-icon company-name-icon company-info-icon"></view>
+        <text class="info-item-label">企业名称：</text>
+        <text class="info-item-content">{{companySearchResult.Name}}</text>
+      </view>
+      <view class="info-item">
+        <view class="form-item-icon company-position-icon company-info-icon"></view>
+        <text class="info-item-label">企业地点：</text>
+        <text class="info-item-content">{{companySearchResult.Province}}{{companySearchResult.City}}{{companySearchResult.District}}</text>
+      </view>
+      <view class="info-item">
+        <view class="form-item-icon address-detail-icon company-info-icon"></view>
+        <text class="info-item-label">详细地址：</text>
+        <text class="info-item-content">{{companySearchResult.AddressDetail}}</text>
+      </view>
+      <button class="btn-join-company" hover-class='none' bind:tap="joinCompany">加入团队</button>
+    </view>
   </view>
 </view>
 <view class="auth-alert" hidden="{{!showAuthLocationAlert}}">

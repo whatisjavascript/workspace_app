@@ -10,7 +10,8 @@ Page({
     companyPosition: null,
     companyAddressDetail: '',
     showAuthLocationAlert: false,
-    showAuthUserInfoAlert: true
+    showAuthUserInfoAlert: true,
+    companySearchResult: null
   },
   onShow() {
     const page = this;
@@ -169,12 +170,70 @@ Page({
   getUserWxInfo(event) {
     const page = this;
     let userInfo = event.detail.userInfo;
-    console.log(userInfo)
     if(userInfo) {
       app.submitUserInfo(userInfo);
       page.setData({
         showAuthUserInfoAlert: false
       });
     }
-  }
+  },
+  searchCompany(event) {
+    const page = this;
+    let searchValue = event.detail.value.trim();
+    if(searchValue !== "") {
+      wx.showLoading({
+        title: "正在搜索"
+      });
+      wx.request({
+        url: app.globalData.host + '/company/getCompanyInfoByNumber',
+        method: 'GET',
+        data: {
+          companyNumber: searchValue
+        },
+        success: function (res) {
+          let companyInfo = res.data.value;
+          page.setData({
+            companySearchResult: companyInfo
+          });
+          if (!companyInfo) {
+            wx.showModal({
+              title: "提示",
+              content: "不存在该编号的团队，请您重新输入",
+              showCancel: false
+            })
+          }
+        },
+        complete: function () {
+          wx.hideLoading();
+        }
+      });
+    }
+  },
+  joinCompany() {
+    const page = this;
+    let companyNumber = page.data.companySearchResult.Number;
+    wx.request({
+      url: app.globalData.host + '/user/joinCompany',
+      method: 'GET',
+      data: {
+        sessionId: app.globalData.sessionId,
+        companyNumber: companyNumber
+      },
+      success(res) {
+        if(res.data.resultCode.code === 0) {
+          wx.switchTab({
+            url: '/pages/index/index',
+          });
+        }else if(res.data.resultCode.code === -5) {
+          wx.showModal({
+            title: '错误提示',
+            content: '服务器出错，无法加入团队',
+            showCancel: false
+          })
+        }else if(res.data.resultCode.code === -1) {
+          app.login().then(app.getSessionId).then(page.joinCompany);
+        }
+      } 
+    });
+  }  
 });
