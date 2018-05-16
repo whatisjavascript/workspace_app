@@ -142,7 +142,7 @@ Page({
           console.log(res);
           if(res.data.resultCode.code === 0) {
             wx.redirectTo({
-              url: '/pages/index/index',
+              url: '/pages/set_location/set_location',
             });
           }else {
             wx.showModal({

@@ -1,0 +1,5 @@
+<map id="map" markers="{{markers}}" latitude="{{latitude}}" longitude="{{longitude}}" show-location></map>
+<view class="btns">
+  <button bind:tap="setCompanyLocation">选择红标地点</button>
+  <button type="primary" bind:tap="chooseLocation">重新选择地点</button>
+</view>

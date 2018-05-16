@@ -3,7 +3,8 @@
         "pages/index/index",
         "pages/workspace/workspace",
         "pages/my/my",
-        "pages/create_join_company/create_join_company"
+        "pages/create_join_company/create_join_company",
+        "pages/set_location/set_location"
     ],
     "window": {
         "backgroundTextStyle":"light",

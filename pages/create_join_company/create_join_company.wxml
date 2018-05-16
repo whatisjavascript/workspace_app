@@ -31,7 +31,7 @@
       <view class="form-item {{focusCompanyAddressDetail ? 'active' : ''}}">
         <textarea placeholder="请输入企业详细地址" maxlength='80' bindfocus="focusCompanyAddressDetail" bindinput='changeCompanyAddressDetail'></textarea>
       </view>
-      <button class="next-step" hover-class="none" bind:tap="submitCompanyInfo">完成</button>
+      <button class="next-step" hover-class="none" bind:tap="submitCompanyInfo">下一步</button>
     </view>
   </view>
   <view class="form-wrap" hidden="{{createCompanyActive}}">
