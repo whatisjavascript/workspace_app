@@ -151,6 +151,7 @@ Page({
             content: '设置考勤地点成功',
             showCancel: false,
             success: function(res) {
+              console.log(res);
               if (res.confirm) {
                 wx.switchTab({
                   url: '/pages/index/index',

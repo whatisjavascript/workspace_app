@@ -1,7 +1,8 @@
 App({
   globalData: {
     host: 'http://dev.service.61info.cn',
-    sessionId: null
+    sessionId: null,
+    userInfo: null
   },
   onLaunch(options) {
     const app = this;
@@ -80,6 +81,9 @@ App({
           sessionId: app.globalData.sessionId
         },
         success(res) {
+          if(res.data.value) {
+            app.globalData.userInfo = res.data.value;
+          }
           resolve(res.data);
         },
         fail() {
