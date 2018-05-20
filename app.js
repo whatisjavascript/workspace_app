@@ -1,6 +1,6 @@
 App({
   globalData: {
-    host: 'http://dev.service.61info.cn',
+    host: 'http://qq8acb.natappfree.cc',
     sessionId: null,
     userInfo: null
   },

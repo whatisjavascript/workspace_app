@@ -1,12 +1,24 @@
 const app = getApp();
+const QQMapWx = require("../../util/qqmap-wx-jssdk.min.js");
+var qqmapskd = null;
 Page({
   data: {
     companyId: null,
     companyInfo: null,
-    attenceInfo: null
+    attenceInfo: null,
+    userInfo: null,
+    companyLat: null,
+    companyLng: null,
+    nearCompany: true, // 是否处于考勤地点200米附近
+    curLocation: "", // 当前定位的位置信息
+    isLate: false,
+    isEarly: false
   },
   onLoad() {
     const page = this;
+    qqmapskd = new QQMapWx({
+      key: "OP2BZ-EPXCG-PA3QA-IPKKX-NMA4F-VHFLI"
+    });
     wx.checkSession({
       success() {
         console.log('index-授权未过期');
@@ -48,7 +60,8 @@ Page({
         })
       }else {
         page.setData({
-          companyId: data.value.CompanyId
+          companyId: data.value.CompanyId,
+          userInfo: app.globalData.userInfo
         });
         page.getPageData();
       }
@@ -59,9 +72,26 @@ Page({
 
   getPageData() {
     const page = this;
-    page.getCompanyInfo();
+    page.getCompanyInfo().then(page.getCompanyLocation).then(page.getCurLocation).then(page.judgeDistance).then(page.getCurLocationInfo).then(function() {
+      let curDate = new Date();
+      let year = curDate.getFullYear();
+      let month = curDate.getMonth() + 1;
+      let date = curDate.getDate();
+      let ruleStartDate = new Date(year + '/' + month + '/' + date + ' ' + page.data.companyInfo.AttenceStartTime).getTime();
+      let ruleEndDate = new Date(year + '/' + month + '/' + date + ' ' + page.data.companyInfo.AttenceEndTime).getTime();
+      console.log(ruleStartDate, curDate.getTime());
+      if (ruleStartDate < curDate.getTime()) {
+        page.setData({
+          isLate: true
+        });
+      }
+      if (ruleEndDate > curDate.getTime()) {
+        page.setData({
+          isEarly: true
+        });
+      }
+    });
     page.getAttenceInfo();
-    page.get
   },
   getCompanyInfo() {
     const page = this;
@@ -113,6 +143,162 @@ Page({
       wx.showLoading({
         title: '加载中'
       });
+      wx.request({
+        url: app.globalData.host + '/company/getCompanyLocation',
+        method: 'GET',
+        data: {
+          companyId: page.data.companyId
+        },
+        success: function(res) {
+          console.log(res);
+          page.setData({
+            companyLat: res.data.value.Latitude/100000,
+            companyLng: res.data.value.Longitude/100000
+          });
+          resolve(res.data.value);
+        },
+        fail: function() {
+          reject();
+        },
+        complete: function() {
+          wx.hideLoading();
+        }
+      });
+    });
+  },
+  getCurLocation() {
+    const page = this;
+    return new Promise((resolve, reject) => {
+      wx.getLocation({
+        type: "gcj02",
+        success: function(res) {
+          resolve(res);
+        },
+        fail: function() {
+          reject();
+        }
+      })
+    });
+  },
+  judgeDistance(data) {
+    const page = this;
+    return new Promise((resolve, reject) => {
+      qqmapskd.calculateDistance({
+        from: data.latitude + ',' + data.longitude,
+        to: page.data.companyLat + ',' + page.data.companyLng,
+        success: function(res) {
+          if(res.status === 0) {
+            let distance = res.result.elements[0].distance;
+            if(distance > 200) {
+              page.setData({
+                nearCompany: false
+              });
+            }else {
+              page.setData({
+                nearCompany: true
+              });
+            }
+            resolve(data);
+          }
+        },
+        fail: function(res) {
+          console.log(res);
+          if(res.status === 373) {
+            page.setData({
+              nearCompany: false
+            });
+            resolve(data);
+          }
+        }
+      });
+    });
+  },
+  getCurLocationInfo(data) {
+    const page = this;
+    return new Promise((resolve, reject) => {
+      console.log('aaa');
+      qqmapskd.reverseGeocoder({
+        location: {
+          latitude: data.latitude,
+          longitude: data.longitude
+        },
+        success: function(res) {
+          if(res.status === 0) {
+            page.setData({
+              curLocation: res.result.formatted_addresses.recommend
+            });
+            resolve();
+          }
+        }
+      });
+    });
+  },
+  setAttenceStartTime() {
+    const page = this;
+    wx.showLoading({
+      title: '正在打卡'
+    });
+    let status = 0;
+    if (page.data.isLate) {
+      status = 1;
+    }
+    wx.request({
+      url: app.globalData.host + '/attence/setAttenceStartTime',
+      method: 'GET',
+      data: {
+        sessionId: app.globalData.sessionId,
+        location: page.data.curLocation,
+        status: status
+      },
+      success: function(res) {
+        if(res.data.resultCode.code === 0) {
+          wx.showModal({
+            title: '提示',
+            content: '上班打卡成功',
+            showCancel: false
+          });
+          page.setData({
+            attenceInfo: res.data.value
+          });
+        }
+      },
+      complete: function () {
+        wx.hideLoading();
+      }
+    });
+  },
+  setAttenceEndTime() {
+    const page = this;
+    wx.showLoading({
+      title: '正在打卡'
+    });
+    let status = 0;
+    if (page.data.isEarly) {
+      status = 1;
+    }
+    wx.request({
+      url: app.globalData.host + '/attence/setAttenceEndTime',
+      method: 'GET',
+      data: {
+        id: page.data.attenceInfo.Id,
+        location: page.data.curLocation,
+        status: status
+      },
+      success: function (res) {
+        if (res.data.resultCode.code === 0) {
+          wx.showModal({
+            title: '提示',
+            content: '下班打卡成功',
+            showCancel: false
+          });
+          page.setData({
+            attenceInfo: res.data.value
+          });
+        }
+      },
+      complete: function () {
+        wx.hideLoading();
+      }
     });
   }
 });

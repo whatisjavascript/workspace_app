@@ -10,5 +10,31 @@
         "backgroundTextStyle":"light",
         "navigationBarBackgroundColor": "#fff",
         "navigationBarTextStyle":"black"
+    },
+    "tabBar": {
+      "color": "#a4a5a9",
+      "selectedColor": "#1296db",
+      "backgroundColor": "#fff",
+      "borderStyle": "black",
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "text": "考勤",
+          "iconPath": "./images/attence.png",
+          "selectedIconPath": "./images/attence_active.png"
+        },  
+        {
+          "pagePath": "pages/workspace/workspace",
+          "text": "工作台",
+          "iconPath": "./images/workspace.png",
+          "selectedIconPath": "./images/workspace_active.png"
+        },
+        {
+          "pagePath": "pages/my/my",
+          "text": "我的",
+          "iconPath": "./images/my.png",
+          "selectedIconPath": "./images/my_active.png"
+        }
+      ]
     }
 }

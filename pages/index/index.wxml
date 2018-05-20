@@ -1,0 +1,87 @@
+<view class="header">
+  <view class="avatar">
+    <image src="{{userInfo.Avatar}}" mode='widthFix'></image>
+  </view>
+  <text class="username">{{userInfo.NickName}}</text>
+  <text class="company-name">{{companyInfo.Name}}</text>
+</view>
+<view class="content">
+  <view class="content-tip">每天给自己一个希望，只为明天更美好</view>
+  <view class="timeline">
+    <view class="timeline-dot"></view>
+    <view class="timeline-line"></view>
+    <view class="timeline-dot"></view>
+    <view class="timeline-line"></view>
+    <view class="timeline-dot"></view>
+  </view>
+  <view class="attence-box">
+    <view class="start">
+      <view class="rule-time">上班时间: {{companyInfo.AttenceStartTime}}</view>
+      <view wx:if="{{attenceInfo === null && !isLate && nearCompany}}">
+        <view class="btn-attence normal" bind:tap="setAttenceStartTime">
+          <view class="btn-attence-txt">上班打卡</view>
+        </view>
+        <view class="cur-location">当前位置：{{curLocation}}</view>
+      </view>
+      <view wx:if="{{attenceInfo === null && isLate && nearCompany}}">
+        <view class="btn-attence late" bind:tap="setAttenceStartTime">
+          <view class="btn-attence-txt">迟到打卡</view>
+        </view>
+        <view class="cur-location">当前位置：{{curLocation}}</view>
+      </view>
+      <view wx:if="{{attenceInfo === null && !nearCompany}}">
+        <view class="btn-attence far">
+          <view class="btn-attence-txt">外勤打卡</view>
+        </view>
+        <view class="cur-location">当前位置：{{curLocation}}</view>
+      </view>  
+      <view wx:if="{{attenceInfo !== null}}">
+        <view class="attence-time">
+          <text>打卡时间：{{attenceInfo.StartTime}}</text>
+          <text class="status status-normal" wx:if="{{attenceInfo.StartTimeState == 0}}">正常</text>
+          <text class="status status-late" wx:if="{{attenceInfo.StartTimeState == 1}}">迟到</text>
+          <text class="status status-late" wx:if="{{attenceInfo.StartTimeState == 2}}">外勤</text>
+          <text class="status status-late" wx:if="{{attenceInfo.StartTimeState == 3}}">请假</text>
+        </view>
+        <view class="attence-location">
+          <text>打卡地点：{{attenceInfo.StartLocation}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="end">
+      <view class="rule-time">下班时间: {{companyInfo.AttenceEndTime}}</view>
+      <view wx:if="{{attenceInfo !==null && !attenceInfo.EndTime}}">
+        <view wx:if="{{!nearCompany}}">
+          <view class="btn-attence far">
+            <view class="btn-attence-txt">外勤打卡</view>
+          </view>
+          <view class="cur-location">当前位置：{{curLocation}}</view>
+        </view>
+        <view wx:elif="{{isEarly}}">
+          <view class="btn-attence late" bind:tap="setAttenceEndTime">
+            <view class="btn-attence-txt">早退打卡</view>
+          </view>
+          <view class="cur-location">当前位置：{{curLocation}}</view>
+        </view>
+        <view wx:else>
+          <view class="btn-attence normal" bind:tap="setAttenceEndTime">
+            <view class="btn-attence-txt">下班打卡</view>
+          </view>
+          <view class="cur-location">当前位置：{{curLocation}}</view>
+        </view>
+      </view>
+      <view wx:if="{{attenceInfo.EndTime}}">
+        <view class="attence-time">
+          <text>打卡时间：{{attenceInfo.EndTime}}</text>
+          <text class="status status-normal" wx:if="{{attenceInfo.EndTimeState == 0}}">正常</text>
+          <text class="status status-late" wx:if="{{attenceInfo.EndTimeState == 1}}">早退</text>
+          <text class="status status-late" wx:if="{{attenceInfo.EndTimeState == 2}}">外勤</text>
+          <text class="status status-late" wx:if="{{attenceInfo.EndTimeState == 3}}">请假</text>
+        </view>
+        <view class="attence-location">
+          <text>打卡地点：{{attenceInfo.EndLocation}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
