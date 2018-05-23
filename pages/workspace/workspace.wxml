@@ -1,0 +1,42 @@
+<view class="wrapper">
+  <view class="item-line">
+    <view class="item" bind:tap="gotoQingjia">
+      <view class="item-avatar">
+        <image src="../../images/qingjia.png"></image>
+      </view>
+      <text class="item-name">请假</text>
+    </view>
+    <view class="item">
+      <view class="item-avatar">
+        <image src="../../images/baoxiao.png"></image>
+      </view>
+      <text class="item-name">报销</text>
+    </view>
+    <view class="item" bind:tap="gotoLocation">
+      <view class="item-avatar">
+        <image src="../../images/shenpi.png"></image>
+      </view>
+      <text class="item-name">设考勤点</text>
+    </view>
+  </view>
+  <view class="item-line">
+    <view class="item">
+      <view class="item-avatar">
+          <image src="../../images/zhaopin.png"></image>
+      </view>
+      <text class="item-name">招聘管理</text>
+    </view>
+    <view class="item">
+      <view class="item-avatar" bind:tap="gotoRenshi">
+          <image src="../../images/renshi.png"></image>
+      </view>
+      <text class="item-name">人事管理</text>
+    </view>
+    <view class="item">
+      <view class="item-avatar">
+          <image src="../../images/meeting.png"></image>
+      </view>
+      <text class="item-name">会议管理</text>
+    </view>
+  </view>
+</view>

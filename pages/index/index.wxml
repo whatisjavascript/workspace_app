@@ -30,7 +30,7 @@
         <view class="cur-location">当前位置：{{curLocation}}</view>
       </view>
       <view wx:if="{{attenceInfo === null && !nearCompany}}">
-        <view class="btn-attence far">
+        <view class="btn-attence far" bind:tap="waiqinStartAttence">
           <view class="btn-attence-txt">外勤打卡</view>
         </view>
         <view class="cur-location">当前位置：{{curLocation}}</view>
@@ -52,7 +52,7 @@
       <view class="rule-time">下班时间: {{companyInfo.AttenceEndTime}}</view>
       <view wx:if="{{attenceInfo !==null && !attenceInfo.EndTime}}">
         <view wx:if="{{!nearCompany}}">
-          <view class="btn-attence far">
+          <view class="btn-attence far" bind:tap="waiqinEndAttence">
             <view class="btn-attence-txt">外勤打卡</view>
           </view>
           <view class="cur-location">当前位置：{{curLocation}}</view>

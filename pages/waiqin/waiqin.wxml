@@ -1,0 +1,8 @@
+<map id="map" markers="{{markers}}" latitude="{{latitude}}" longitude="{{longitude}}" show-location></map>
+<view class="info">
+  <view class="info-inner">
+    <view class="reason">外勤事由：</view>
+    <textarea placeholder='请输入外勤事由' bindinput='textareaChange'></textarea>
+  </view>
+  <button class="btn-submit" bind:tap="submit">提交</button>
+</view>

@@ -1,0 +1,60 @@
+.page-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+.info-wrapper {
+  margin-top: 16rpx;
+  margin-bottom: 16rpx;
+  padding: 16rpx 30rpx;
+  background-color: #fff;
+}
+.info-item {
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+.info-item:last-child {
+  border-bottom: 0rpx;
+}
+.picker-view {
+  font-size: 32rpx;
+  overflow: hidden;
+}
+.picker-left {
+  float: left;
+}
+.picker-right {
+  float: right;
+  color: #999;
+}
+.icon-right {
+  position: relative;
+  top: 8rpx;
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABcklEQVRoQ+3ZMUrFQBAG4H+wEMRTeAUVG1Ere72LYZNCsMluPEqaZys8fLZ2lnY5gHfYlcATXreQ2ZlhIWlDkv/b2Qy7CaHygyrPjxVgXcG1AmsFmCPAnkLe+zPn3EREiZll0eUsQAjhBcAzgO8Y433Xdb+LUjAuYgG8959EdDs/P6X0k1K60UZwAecAZsSpFYIFmEP3fX9FRFsrBBtgjSgCsEQUA1ghigIsEMUB2ggRwAHig4hOJFusGGAOHUK4Tim9SyJEARoIcYA0QgUgiVADSCFUAf8IAFsAx/vutGnb9nHpitoEcNiZALw55x6qAEi0VbUKSISfq6YCkAqvApAMLw6QDi8K2G8161zMae6Ti7/EmuGLTyHt8EUBFuGLAazCFwFYhmcDhmG4iDHurL7KsQEhhB2AO8lNe26Vymqj3vtXInqq9vP6OI5H0zRdNk3zVeUPjlx5Nc6zppBGwNwzVkBuhKTPrxWQHuHc/auvwB963KBAiE/czgAAAABJRU5ErkJggg==) center center no-repeat;
+  background-size: 100% 100%;
+}
+.info-title {
+  font-size: 32rpx;
+}
+.info-wrapper > textarea {
+  margin-top: 18rpx;
+  height: 150rpx;
+  font-size: 28rpx;
+  width: 100%;
+  color: #999;
+}
+.submit-btn {
+  margin-top: 60rpx;
+  width: 100%;
+  border-color: #1296db;
+  color: #fff;
+  background-color: #1296db;
+  border-radius: 0;
+}

@@ -1,0 +1,29 @@
+.info-wrapper {
+  padding: 10rpx 30rpx 0;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+  background-color: #fff;
+}
+.info-item {
+  width: 100%;
+  height: 120rpx;
+  line-height: 120rpx;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+.info-left {
+  float: left;
+}
+.info-right {
+  float: right;
+  color: #888;
+}
+.icon-right {
+  position: relative;
+  top: 8rpx;
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABcklEQVRoQ+3ZMUrFQBAG4H+wEMRTeAUVG1Ere72LYZNCsMluPEqaZys8fLZ2lnY5gHfYlcATXreQ2ZlhIWlDkv/b2Qy7CaHygyrPjxVgXcG1AmsFmCPAnkLe+zPn3EREiZll0eUsQAjhBcAzgO8Y433Xdb+LUjAuYgG8959EdDs/P6X0k1K60UZwAecAZsSpFYIFmEP3fX9FRFsrBBtgjSgCsEQUA1ghigIsEMUB2ggRwAHig4hOJFusGGAOHUK4Tim9SyJEARoIcYA0QgUgiVADSCFUAf8IAFsAx/vutGnb9nHpitoEcNiZALw55x6qAEi0VbUKSISfq6YCkAqvApAMLw6QDi8K2G8161zMae6Ti7/EmuGLTyHt8EUBFuGLAazCFwFYhmcDhmG4iDHurL7KsQEhhB2AO8lNe26Vymqj3vtXInqq9vP6OI5H0zRdNk3zVeUPjlx5Nc6zppBGwNwzVkBuhKTPrxWQHuHc/auvwB963KBAiE/czgAAAABJRU5ErkJggg==) center center no-repeat;
+  background-size: 100% 100%;
+}

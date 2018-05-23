@@ -300,5 +300,16 @@ Page({
         wx.hideLoading();
       }
     });
+  },
+  waiqinStartAttence() {
+    wx.navigateTo({
+      url: '/pages/waiqin/waiqin?type=1',
+    });
+  },
+  waiqinEndAttence() {
+    const page = this;
+    wx.navigateTo({
+      url: '/pages/waiqin/waiqin?type=2&attenceId=' + page.data.attenceInfo.Id,
+    });
   }
 });

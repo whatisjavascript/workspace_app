@@ -1,0 +1,50 @@
+<view class="page-wrapper">
+  <view class="info-wrapper">
+    <view class="info-item">
+      <picker mode="selector" range="{{typeList}}" range-key="name" bindchange="changeType">
+        <view class="picker-view">
+          <view class="picker-left">请假类型</view>
+          <view class="picker-right">
+            <text wx:if="{{type == null}}">请选择</text>
+            <text wx:elif="{{type == 0}}">事假</text>
+            <text wx:elif="{{type == 1}}">病假</text>
+            <text wx:elif="{{type == 2}}">年假</text>
+            <text wx:else="{{type == 3}}">产假</text>
+            <view class="icon-right"></view>
+          </view> 
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="info-wrapper">
+    <view class="info-item">
+      <picker mode="time" start="09:00" end="18:00" bindchange="changeStartTime">
+        <view class="picker-view">
+          <view class="picker-left">开始时间</view>
+          <view class="picker-right">
+            <text wx:if="{{startTime == null}}">请选择</text>
+            <text wx:else>{{startTime}}</text>
+            <view class="icon-right"></view>
+          </view>
+        </view>
+      </picker>
+    </view>
+    <view class="info-item">
+      <picker mode="time" start="09:00" end="18:00" bindchange="changeEndTime">
+        <view class="picker-view">
+          <view class="picker-left">结束时间</view>
+          <view class="picker-right">
+            <text wx:if="{{endTime == null}}">请选择</text>
+            <text wx:else>{{endTime}}</text>
+            <view class="icon-right"></view>
+          </view>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="info-wrapper">
+    <view class="info-title">请假事由</view>
+    <textarea placeholder="请输入请假事由" maxlength='80' bindinput='changeReason'></textarea>
+  </view>
+  <button class="submit-btn" bind:tap="submitQingjia">提交</button>
+</view>

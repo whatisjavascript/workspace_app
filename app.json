@@ -4,7 +4,10 @@
         "pages/workspace/workspace",
         "pages/my/my",
         "pages/create_join_company/create_join_company",
-        "pages/set_location/set_location"
+        "pages/set_location/set_location",
+        "pages/renshi/renshi",
+        "pages/qingjia/qingjia",
+        "pages/waiqin/waiqin"
     ],
     "window": {
         "backgroundTextStyle":"light",

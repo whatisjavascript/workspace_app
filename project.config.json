@@ -40,6 +40,30 @@
 					"name": "set_location",
 					"pathName": "pages/set_location/set_location",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/my/my",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "工作台",
+					"pathName": "pages/workspace/workspace",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "qingjia",
+					"pathName": "pages/qingjia/qingjia",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "waiqin",
+					"pathName": "pages/waiqin/waiqin",
+					"query": ""
 				}
 			]
 		}

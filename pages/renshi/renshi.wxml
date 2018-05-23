@@ -1,0 +1,10 @@
+<view class="info-wrapper">
+<view class="info-item">
+  <view class="info-left">新建部门</view>
+  <view class="info-right"><view class="info-right"><view class="icon-right"></view></view></view>
+</view>
+<view class="info-item">
+  <view class="info-left">新人入职审批</view>
+  <view class="info-right"><view class="info-right"><view class="icon-right"></view></view></view>
+</view>
+</view>

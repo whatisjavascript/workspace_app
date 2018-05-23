@@ -1,0 +1,37 @@
+<view class="page-wrapper">
+  <view class="user-baseinfo">
+    <view class="avatar">
+      <image src="{{userInfo.Avatar}}"></image>
+    </view>
+  </view>
+  <view class="info-wrapper">
+    <view class="info-item">
+      <view class="info-left">昵称</view>
+      <view class="info-right">{{userInfo.NickName}}</view>
+    </view>
+    <view class="info-item">
+      <view class="info-left">性别</view>
+      <view class="info-right">
+        <text wx:if="{{userInfo.Gender == 0}}">未知</text>
+        <text wx:elif="{{userInfo.Gender == 1}}">男</text>
+        <text wx:else>女</text>
+      </view>
+    </view>
+  </view>
+  <text class="info-name">所在企业</text>
+  <view class="info-wrapper wrapper2">
+    <view class="info-item">
+      <view class="info-left">企业名</view>
+      <view class="info-right">{{companyInfo.Name}}</view>
+      <view class="huizhang"></view>
+    </view>
+  </view>
+  <text class="info-name">审批相关</text>
+  <view class="info-wrapper wrapper2">
+    <view class="info-item">
+      <view class="info-left">查看我发起的审批</view>
+      <view class="info-right"><view class="icon-right"></view></view>
+      <view class="huizhang"></view>
+    </view>
+  </view>
+</view>
